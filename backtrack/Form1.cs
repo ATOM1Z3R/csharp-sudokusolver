@@ -1,8 +1,8 @@
 ﻿using System;
-using BackTrackClassLibrary;
 using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Autofac;
 
 namespace backtrack
 {
@@ -33,8 +33,14 @@ namespace backtrack
                     }
 
                 }
-            FindSolution solve = new FindSolution();
-            solve.Find(sudoku); //Run Algorithm
+
+            var container = ContainerConfig.Config();
+            using (var scope = container.BeginLifetimeScope())
+            {
+                var app = scope.Resolve<IAppStart>();
+                app.Start(sudoku);
+            }
+
             for (int i = 0, n = 1; i < 9; i++)
             {
                 for (int j = 0; j < 9; j++)

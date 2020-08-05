@@ -2,6 +2,6 @@
 {
     public interface IFindSpace
     {
-        int[] FindSpace(int[,] sudoku);
+        int[] Find(int[,] sudoku);
     }
 }

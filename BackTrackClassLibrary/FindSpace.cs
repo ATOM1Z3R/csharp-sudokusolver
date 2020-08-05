@@ -1,10 +1,13 @@
 ﻿using BackTrackInterfacesLibrary;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace BackTrackClassLibrary
 {
-    public class FindFreeSpace : IFindSpace //Find Empty Space in Table
+    class FindSpace : IFindSpace
     {
-        public virtual int[] Find(int[,] sudoku)
+        int[] IFindSpace.Find(int[,] sudoku)
         {
             int[] coords = new int[2];
             for (int i = 0; i < 9; i++)
